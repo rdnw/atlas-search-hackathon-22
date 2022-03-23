@@ -1,0 +1,39 @@
+/**
+
+Task One: Build a search pipeline that uses $search to query for products across the name field and returns the top 12 matches
+
+*/
+
+const index = "product-search-index";
+const database = "test"
+
+use(database)
+
+let searchTerm = "rug"
+
+
+db.products.aggregate([
+  {
+	$search: {
+		index: index,
+		text: {
+			query: searchTerm,
+			path: "name"
+		}
+	}
+  },
+  {
+	  $project: {
+		  name: "$name",
+		  score: { $meta: "searchScore" }
+	  }
+  },
+  {
+	  $sort: {
+		  score: -1
+	  }
+  },
+  {
+	  $limit: 12
+  }
+])

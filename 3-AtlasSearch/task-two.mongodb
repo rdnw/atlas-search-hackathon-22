@@ -1,0 +1,44 @@
+/**
+
+Task Two: Expand search pipeline to search across multiple fields and allow for misspelled words
+
+*/
+const index = "product-search-index";
+const database = "test"
+
+use(database)
+
+let searchTerm = "Sheets"
+
+
+db.products.aggregate([
+  {
+	$search: {
+		index: index,
+		text: {
+			query: searchTerm,
+			path: ["name", "item_keywords.value"], // Description as well?
+      fuzzy: {
+        maxEdits: 2,
+        prefixLength: 0,
+        maxExpansions: 50
+      }
+		}
+	}
+  },
+  {
+	  $project: {
+      item_id: "$item_id",
+		  name: "$name",
+		  score: { $meta: "searchScore" }
+	  }
+  },
+  {
+	  $sort: {
+		  score: -1
+	  }
+  },
+  {
+	  $limit: 12
+  }
+])

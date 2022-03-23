@@ -1,0 +1,17 @@
+/**
+
+Task Five: Searching the store for “carpet” brings limited results, unlike “rugs”. Create a Synonym source collection to allow “carpet” to be matched to “rug”
+
+*/
+
+const database = "test"
+
+use(database)
+
+const collectionName = "search_synonyms"
+db.createCollection(collectionName, { autoIndexId: false });
+
+db.search_synonyms.insertOne({
+  "mappingType": "equivalent",
+  "synonyms": [ "carpet", "rug" ]
+})
