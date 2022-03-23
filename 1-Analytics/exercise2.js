@@ -1,5 +1,10 @@
 [
   {
+    '$project': {
+      '_id': 0, 
+      'item_id': 1
+    }
+  }, {
     '$lookup': {
       'from': 'qa', 
       'localField': 'item_id', 
