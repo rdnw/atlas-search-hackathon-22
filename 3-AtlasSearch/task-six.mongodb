@@ -22,12 +22,5 @@ db.products.aggregate([
       }
     }
   },
-  {
-	  $project: {
-      item_id: "$item_id",
-      brand: "$brand",
-		  name: "$name",
-		  score: { $meta: "searchScore" }
-	  }
-  }
+
 ])
