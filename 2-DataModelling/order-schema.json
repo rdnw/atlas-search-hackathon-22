@@ -1,0 +1,18 @@
+{
+    "_id": {
+         "$oid": "623b147dde2d001f7b0f1f4b"
+   },
+    "user_id": "623b0b18de2d001f7b0f1f20",
+            "products": [
+                {
+                    "product_id": "6223ac1c6f48709fae0aa338",
+                    "quantity": 1,
+                    "price": "12000 GBP"
+                }
+            ],
+            "purchase_date": {
+                "$date": "2022-03-23T00:00:00.000Z"
+            },
+            "total_price": "12000 GBP",
+            "tracking_id": "fnsdofsaijgr20393"
+}

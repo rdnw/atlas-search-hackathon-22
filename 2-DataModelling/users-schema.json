@@ -1,0 +1,17 @@
+{
+    "_id": {
+        "$oid": "623b0b18de2d001f7b0f1f20"
+    },
+    "name": "Orlando",
+    "email": "orlando@amazon.com",
+    "order_ids": [
+        "623574345754456876556"
+    ],
+    "wishlist": [
+        {
+            "name": "My Wishlist",
+            "product_ids": ["6223ac1c6f48709fae0aa338"
+            ]
+        }
+    ]
+}
