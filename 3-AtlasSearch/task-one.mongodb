@@ -11,7 +11,6 @@ use(database)
 
 let searchTerm = "rug"
 
-
 db.products.aggregate([
   {
 	$search: {
