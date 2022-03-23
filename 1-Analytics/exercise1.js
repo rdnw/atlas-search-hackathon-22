@@ -17,8 +17,7 @@
       'preserveNullAndEmptyArrays': false
     }
   }, {
-    '$project': {
-      '_id': 0, 
+    '$project': { 
       'item_id': 1, 
       'reviews.overall': 1
     }
