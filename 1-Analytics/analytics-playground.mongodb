@@ -1,0 +1,14 @@
+use('test')
+
+db.products.aggregate(
+	[
+	  {
+	    '$group': {
+	      '_id': '$item_id', 
+	      'maxPrice': {
+	        '$max': '$price.value'
+	      }
+	    }
+	  }
+	]
+)

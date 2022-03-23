@@ -1,0 +1,28 @@
+/**
+
+Task Five: Create a new search index to allow for the autocomplete data type on only the product’s name field
+
+*/
+
+/*
+
+Index JSON: 
+
+{
+  "mappings": {
+    "dynamic": false,
+    "fields": {
+      "name": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "autocomplete"
+        }
+      ]
+    }
+  }
+}
+
+*/

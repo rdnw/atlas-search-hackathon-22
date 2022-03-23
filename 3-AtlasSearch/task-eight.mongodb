@@ -1,0 +1,32 @@
+/**
+
+Task Six: Build a search pipeline that will return a “rug” when looking for “carpet”
+
+*/
+
+const index = "product-name-synonym-index";
+const database = "test"
+
+use(database)
+
+let searchTerm = "carpet"
+
+db.products.aggregate([
+  {
+    $search: {
+      index: index,
+      text: {
+        query: searchTerm,
+        path: "name"
+      }
+    }
+  },
+  {
+	  $project: {
+      item_id: "$item_id",
+      brand: "$brand",
+		  name: "$name",
+		  score: { $meta: "searchScore" }
+	  }
+  }
+])

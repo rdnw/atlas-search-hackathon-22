@@ -1,0 +1,33 @@
+/**
+
+Task Six: Create autocompletion for product names and an aggregation pipeline which returns 10 products based on a partial product name
+
+*/
+
+const index = "product-name-autocomplete";
+const database = "test"
+
+use(database)
+
+let searchTerm = "Shir"
+
+db.products.aggregate([
+  {
+    $search: {
+      index: index,
+      autocomplete: {
+        query: searchTerm,
+        path: "name",
+        tokenOrder: "any"
+      }
+    }
+  },
+  {
+	  $project: {
+      item_id: "$item_id",
+      brand: "$brand",
+		  name: "$name",
+		  score: { $meta: "searchScore" }
+	  }
+  }
+])
